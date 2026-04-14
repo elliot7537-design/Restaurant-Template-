@@ -869,25 +869,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--red-soft);
 }
 
-/* blur-reveal applied to .dish-card__front — image starts zoomed+blurred */
-.dish-card__front.blur-reveal { overflow: hidden; }
-.dish-card__front.blur-reveal img {
-  transform: scale(1.12);
-  filter: blur(18px);
-  transition:
-    transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1),
-    filter 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.dish-card__front.blur-reveal.is-in img {
-  transform: scale(1);
-  filter: blur(0);
-}
-/* keep hover scale working after reveal */
-.dish-card:hover .dish-card__front.blur-reveal.is-in img {
-  transform: scale(1.05);
-  filter: blur(0);
-}
-
 /* ── Back face (menu card) ── */
 .dish-card__back {
   position: absolute;
