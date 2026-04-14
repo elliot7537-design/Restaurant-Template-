@@ -355,19 +355,7 @@ document.querySelectorAll(".stat__n").forEach(el => counterObserver.observe(el))
 /* ─────────────────────────────────────────────
    8. PHILOSOPHY — strip parallax + stroke-to-fill
    ───────────────────────────────────────────── */
-const bigStatement   = document.querySelector(".big-statement");
-const philStripImg   = document.querySelector(".philosophy__strip-img");
-const philStripEl    = document.querySelector(".philosophy__strip");
-
-function updatePhilosophyStrip() {
-  if (!philStripEl || !philStripImg) return;
-  const rect = philStripEl.getBoundingClientRect();
-  const wh = window.innerHeight;
-  // Parallax: shift strip image –30px → +30px as strip scrolls through viewport
-  const progress = Math.max(0, Math.min(1, (wh - rect.top) / (wh + rect.height)));
-  const shift = (progress - 0.5) * 60;
-  philStripImg.style.setProperty("--strip-shift", shift.toFixed(1) + "px");
-}
+const bigStatement = document.querySelector(".big-statement");
 
 function updateStrokeFill() {
   if (!bigStatement) return;
@@ -386,11 +374,9 @@ function updateStrokeFill() {
 
 window.addEventListener("scroll", () => {
   updateStrokeFill();
-  updatePhilosophyStrip();
   updateGalleryScroll();
 }, { passive: true });
 updateStrokeFill();
-updatePhilosophyStrip();
 
 /* ─────────────────────────────────────────────
    9. EVENING CTA — parallax
