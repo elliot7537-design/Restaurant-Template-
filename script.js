@@ -374,7 +374,6 @@ function updateStrokeFill() {
 
 window.addEventListener("scroll", () => {
   updateStrokeFill();
-  updateGalleryScroll();
 }, { passive: true });
 updateStrokeFill();
 
@@ -428,55 +427,60 @@ document.querySelectorAll(".magnetic-btn").forEach(btn => {
 });
 
 /* ─────────────────────────────────────────────
-   13. GALLERY — scroll-pinned horizontal
+   13. GALLERY — auto-play crossfade carousel
    ───────────────────────────────────────────── */
-const gallerySection  = document.querySelector(".gallery");
-const gallerySticky   = document.querySelector(".gallery__sticky");
-const galleryStrip    = document.querySelector(".gallery__strip");
-const galleryDots     = document.querySelectorAll(".gallery__dot");
-const galleryFill     = document.querySelector(".gallery__progress-fill");
-const galleryHint     = document.querySelector(".gallery__hint");
-const NUM_SLIDES      = 3;
+const gallerySection = document.querySelector(".gallery");
+const gallerySlides  = document.querySelectorAll(".gallery__slide");
+const galleryDots    = document.querySelectorAll(".gallery__dot");
+const galleryFill    = document.querySelector(".gallery__progress-fill");
+const NUM_SLIDES     = gallerySlides.length;
+let   galleryIdx     = 0;
+let   galleryTimer   = null;
 
-// Ease-out cubic: makes the rise decelerate naturally as it lands
-function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-
-function updateGalleryScroll() {
-  if (!gallerySection || !galleryStrip || !gallerySticky) return;
-
-  const rect        = gallerySection.getBoundingClientRect();
-  const wh          = window.innerHeight;
-  const scrolled    = Math.max(0, -rect.top);
-  const scrollRange = gallerySection.offsetHeight - wh;
-  const progress    = Math.min(1, scrolled / scrollRange); // 0 → 1
-
-  // ── Rise-up: sticky panel lifts from 50px below to 0 over first 22% of scroll
-  const ENTRY = 0.22;
-  const riseProgress = easeOutCubic(Math.min(1, progress / ENTRY));
-  const riseY = (1 - riseProgress) * 50; // 50px → 0
-  gallerySticky.style.transform = `translateY(${riseY.toFixed(2)}px)`;
-
-  // ── Horizontal slide: 3 slides × 100vw apart
-  const shift = progress * (NUM_SLIDES - 1) * 100;
-  galleryStrip.style.transform = `translateX(-${shift.toFixed(3)}vw)`;
-
-  // ── Entry curtain fades over same window as the rise
-  const entryOpacity = Math.max(0, 1 - progress / ENTRY);
-  gallerySection.style.setProperty("--gallery-entry", entryOpacity.toFixed(3));
-
-  // ── Progress bar
-  if (galleryFill) galleryFill.style.width = (progress * 100).toFixed(1) + "%";
-
-  // ── Active dot
-  const activeIdx = Math.min(NUM_SLIDES - 1, Math.round(progress * (NUM_SLIDES - 1)));
-  galleryDots.forEach((dot, i) => dot.classList.toggle("is-active", i === activeIdx));
-
-  // ── Scroll hint disappears once motion starts
-  if (galleryHint) galleryHint.style.opacity = progress > 0.04 ? "0" : "1";
+function galleryGoTo(idx) {
+  gallerySlides[galleryIdx].classList.remove("is-active");
+  galleryDots[galleryIdx].classList.remove("is-active");
+  galleryIdx = ((idx % NUM_SLIDES) + NUM_SLIDES) % NUM_SLIDES;
+  gallerySlides[galleryIdx].classList.add("is-active");
+  galleryDots[galleryIdx].classList.add("is-active");
+  // Reset & restart progress bar animation
+  if (galleryFill) {
+    galleryFill.style.transition = "none";
+    galleryFill.style.width = "0%";
+    galleryFill.offsetWidth; // force reflow
+    galleryFill.style.transition = "width 5s linear";
+    galleryFill.style.width = "100%";
+  }
 }
 
-// Initialise on page load
-updateGalleryScroll();
+function galleryStartAutoplay() {
+  if (galleryTimer) clearInterval(galleryTimer);
+  galleryGoTo(galleryIdx); // kick off progress bar
+  galleryTimer = setInterval(() => galleryGoTo(galleryIdx + 1), 5000);
+}
+
+// Dot clicks — jump to slide and restart timer
+galleryDots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    clearInterval(galleryTimer);
+    galleryGoTo(i);
+    galleryTimer = setInterval(() => galleryGoTo(galleryIdx + 1), 5000);
+  });
+});
+
+// Entry animation + autoplay start via IntersectionObserver
+if (gallerySection) {
+  const galleryObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        gallerySection.classList.add("is-visible");
+        galleryStartAutoplay();
+        galleryObs.unobserve(gallerySection);
+      }
+    });
+  }, { threshold: 0.15 });
+  galleryObs.observe(gallerySection);
+}
 
 /* ─────────────────────────────────────────────
    14. YEAR STAMP
