@@ -21,7 +21,6 @@
    ───────────────────────────────────────────── */
 const i18n = {
   en: {
-    "brand": "Brasa",
     "nav.menu": "Menu",
     "nav.story": "Story",
     "nav.faq": "FAQ",
@@ -140,7 +139,6 @@ const i18n = {
   },
 
   es: {
-    "brand": "Brasa",
     "nav.menu": "Men\u00FA",
     "nav.story": "Historia",
     "nav.faq": "Preguntas",
@@ -284,8 +282,10 @@ document.querySelectorAll(".lang__btn").forEach(btn => {
 (function initLang() {
   let saved = null;
   try { saved = localStorage.getItem("brasa.lang"); } catch (_) {}
+  const VALID = ["en", "es"];
+  const safeSaved = VALID.includes(saved) ? saved : null;
   const browser = (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";
-  setLanguage(saved || browser);
+  setLanguage(safeSaved || browser);
 })();
 
 /* ─────────────────────────────────────────────
