@@ -353,37 +353,30 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll(".stat__n").forEach(el => counterObserver.observe(el));
 
 /* ─────────────────────────────────────────────
-   8. PHILOSOPHY — parallax bg + stroke-to-fill
+   8. PHILOSOPHY — strip parallax + stroke-to-fill
    ───────────────────────────────────────────── */
-const philSection   = document.querySelector(".philosophy");
-const philBgImg     = document.querySelector(".philosophy__bg-img");
-const bigStatement  = document.querySelector(".big-statement");
+const bigStatement   = document.querySelector(".big-statement");
+const philStripImg   = document.querySelector(".philosophy__strip-img");
+const philStripEl    = document.querySelector(".philosophy__strip");
 
-function updatePhilosophyParallax() {
-  if (!philSection || !philBgImg) return;
-  const rect = philSection.getBoundingClientRect();
+function updatePhilosophyStrip() {
+  if (!philStripEl || !philStripImg) return;
+  const rect = philStripEl.getBoundingClientRect();
   const wh = window.innerHeight;
-  // progress: 0 when section enters bottom, 1 when it leaves top
-  const progress = Math.max(0, Math.min(1, -rect.top / (rect.height + wh)));
-  // Shift image –40px → +40px as we scroll through the section
-  const shift = (progress - 0.5) * 80;
-  philBgImg.style.setProperty("--phil-shift", shift.toFixed(1) + "px");
+  // Parallax: shift strip image –30px → +30px as strip scrolls through viewport
+  const progress = Math.max(0, Math.min(1, (wh - rect.top) / (wh + rect.height)));
+  const shift = (progress - 0.5) * 60;
+  philStripImg.style.setProperty("--strip-shift", shift.toFixed(1) + "px");
 }
 
 function updateStrokeFill() {
   if (!bigStatement) return;
   const rect = bigStatement.getBoundingClientRect();
   const wh = window.innerHeight;
-
-  // progress 0 → element enters viewport bottom
-  // progress 1 → element is 20% from top
   const progress = Math.max(0, Math.min(1,
-    (wh * 0.85 - rect.top) / (wh * 0.65)
+    (wh * 0.9 - rect.top) / (wh * 0.7)
   ));
-
   bigStatement.style.setProperty("--fill-pct", Math.round(progress * 100) + "%");
-
-  // Fade stroke as fill progresses
   const strokeAlpha = (0.35 * (1 - progress)).toFixed(3);
   bigStatement.style.setProperty(
     "-webkit-text-stroke-color",
@@ -393,10 +386,11 @@ function updateStrokeFill() {
 
 window.addEventListener("scroll", () => {
   updateStrokeFill();
-  updatePhilosophyParallax();
+  updatePhilosophyStrip();
+  updateGalleryScroll();
 }, { passive: true });
 updateStrokeFill();
-updatePhilosophyParallax();
+updatePhilosophyStrip();
 
 /* ─────────────────────────────────────────────
    9. EVENING CTA — parallax
@@ -448,32 +442,41 @@ document.querySelectorAll(".magnetic-btn").forEach(btn => {
 });
 
 /* ─────────────────────────────────────────────
-   13. ROOM SLIDER
+   13. GALLERY — scroll-pinned horizontal
    ───────────────────────────────────────────── */
-const roomImages = [
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=75",
-  "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1200&auto=format&fit=crop&q=75",
-  "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&auto=format&fit=crop&q=75"
-];
-let roomIdx = 0;
-const roomStageImg = document.querySelector(".room__stage img");
-const roomCounter = document.querySelector(".room__label small");
+const gallerySection  = document.querySelector(".gallery");
+const galleryStrip    = document.querySelector(".gallery__strip");
+const galleryDots     = document.querySelectorAll(".gallery__dot");
+const galleryFill     = document.querySelector(".gallery__progress-fill");
+const galleryHint     = document.querySelector(".gallery__hint");
+const NUM_SLIDES      = 3;
 
-function setRoom(i) {
-  roomIdx = (i + roomImages.length) % roomImages.length;
-  if (roomStageImg) {
-    roomStageImg.style.opacity = "0";
-    setTimeout(() => {
-      roomStageImg.src = roomImages[roomIdx];
-      roomStageImg.style.opacity = "1";
-    }, 200);
-  }
-  if (roomCounter) roomCounter.textContent = `0${roomIdx + 1} / 0${roomImages.length}`;
+function updateGalleryScroll() {
+  if (!gallerySection || !galleryStrip) return;
+
+  const rect        = gallerySection.getBoundingClientRect();
+  const wh          = window.innerHeight;
+  const scrolled    = Math.max(0, -rect.top);
+  const scrollRange = gallerySection.offsetHeight - wh;
+  const progress    = Math.min(1, scrolled / scrollRange); // 0 → 1
+
+  // Slide the strip: 3 slides means 2 full transitions (0 → 200vw)
+  const shift = progress * (NUM_SLIDES - 1) * 100;
+  galleryStrip.style.transform = `translateX(-${shift.toFixed(3)}vw)`;
+
+  // Progress bar
+  if (galleryFill) galleryFill.style.width = (progress * 100).toFixed(1) + "%";
+
+  // Active dot
+  const activeIdx = Math.min(NUM_SLIDES - 1, Math.round(progress * (NUM_SLIDES - 1)));
+  galleryDots.forEach((dot, i) => dot.classList.toggle("is-active", i === activeIdx));
+
+  // Hide scroll hint after first slide clears
+  if (galleryHint) galleryHint.style.opacity = progress > 0.05 ? "0" : "1";
 }
 
-if (roomStageImg) roomStageImg.style.transition = "opacity 0.3s ease";
-document.querySelector(".room__arrow--prev")?.addEventListener("click", () => setRoom(roomIdx - 1));
-document.querySelector(".room__arrow--next")?.addEventListener("click", () => setRoom(roomIdx + 1));
+// Initialise on page load
+updateGalleryScroll();
 
 /* ─────────────────────────────────────────────
    14. YEAR STAMP
