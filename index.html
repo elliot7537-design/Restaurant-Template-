@@ -117,49 +117,97 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       PHILOSOPHY — full-bleed bg, stroke→fill
+       PHILOSOPHY — editorial two-column
        ═══════════════════════════════════════ -->
-  <section class="philosophy" id="philosophy">
-    <div class="philosophy__bg-wrap">
+  <section class="philosophy section" id="philosophy">
+    <div class="philosophy__grid">
+
+      <!-- Left: sticky meta column -->
+      <div class="philosophy__col-meta">
+        <span class="eyebrow">Our Philosophy</span>
+        <div class="draw-line" aria-hidden="true"></div>
+        <p class="philosophy__lead reveal" data-i18n="phil.lead">
+          The Brasa experience is built on heat, honesty and harvest. Each plate draws on the flavours of Mexico — honoring tradition while reaching forward.
+        </p>
+        <div class="philosophy__img-inset reveal">
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=600&auto=format&fit=crop&q=80" alt="" aria-hidden="true" />
+        </div>
+      </div>
+
+      <!-- Right: enormous statement text -->
+      <div class="philosophy__col-words">
+        <h2 class="big-statement stroke-fill-text">
+          <span data-i18n="phil.big1">TRADITION</span><br/>
+          <span data-i18n="phil.big2">MEETS</span><br/>
+          <span data-i18n="phil.big3">MODERN FIRE</span>
+        </h2>
+      </div>
+
+    </div>
+
+    <!-- Full-width editorial image strip -->
+    <div class="philosophy__strip">
       <img
         src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&auto=format&fit=crop&q=80"
         alt=""
         aria-hidden="true"
-        class="philosophy__bg-img"
+        class="philosophy__strip-img"
       />
-      <div class="philosophy__overlay"></div>
-    </div>
-
-    <div class="philosophy__content">
-      <div class="philosophy__lead reveal">
-        <p data-i18n="phil.lead">
-          The Brasa experience is built on heat, honesty and harvest. Each plate draws on the flavours of Mexico — honoring tradition while reaching forward.
-        </p>
-      </div>
-
-      <h2 class="big-statement stroke-fill-text">
-        <span data-i18n="phil.big1">TRADITION</span><br/>
-        <span data-i18n="phil.big2">MEETS</span><br/>
-        <span data-i18n="phil.big3">MODERN FIRE</span>
-      </h2>
+      <div class="philosophy__strip-overlay"></div>
     </div>
   </section>
 
-  <!-- ROOM SLIDER -->
-  <section class="room section">
-    <div class="room__track">
-      <button class="room__arrow room__arrow--prev" aria-label="Previous">&#8592;</button>
-      <div class="room__stage reveal">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=75" alt="Dining room" />
-        <div class="room__label">
-          <span data-i18n="room.label">THE DINING ROOM</span>
-          <small>01 / 03</small>
+  <!-- ═══════════════════════════════════════
+       GALLERY — scroll-pinned horizontal slides
+       ═══════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__sticky">
+
+      <div class="gallery__strip">
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&auto=format&fit=crop&q=80" alt="The Dining Room" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">01 — 03</span>
+            <h3 class="gallery__title" data-i18n="room.label">THE DINING ROOM</h3>
+          </div>
+        </div>
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1600&auto=format&fit=crop&q=80" alt="The Bar" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">02 — 03</span>
+            <h3 class="gallery__title">THE BAR</h3>
+          </div>
+        </div>
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&auto=format&fit=crop&q=80" alt="The Open Kitchen" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">03 — 03</span>
+            <h3 class="gallery__title">THE OPEN KITCHEN</h3>
+          </div>
         </div>
       </div>
-      <div class="room__side reveal">
-        <img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?w=500&auto=format&fit=crop&q=75" alt="Plated dish" />
+
+      <!-- Progress indicator -->
+      <div class="gallery__progress" aria-hidden="true">
+        <div class="gallery__progress-fill"></div>
       </div>
-      <button class="room__arrow room__arrow--next" aria-label="Next">&#8594;</button>
+
+      <!-- Dots -->
+      <div class="gallery__dots" aria-hidden="true">
+        <div class="gallery__dot is-active" data-idx="0"></div>
+        <div class="gallery__dot" data-idx="1"></div>
+        <div class="gallery__dot" data-idx="2"></div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="gallery__hint" aria-hidden="true">
+        <span>scroll</span>
+        <div class="gallery__hint-line"></div>
+      </div>
+
     </div>
   </section>
 
