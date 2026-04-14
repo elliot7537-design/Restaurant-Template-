@@ -206,24 +206,10 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-document.querySelectorAll(".reveal, .float").forEach(el => io.observe(el));
-
-/* ---------- Parallax for floating hero images ---------- */
-const floats = document.querySelectorAll(".float");
-let raf = null;
-function parallax() {
-  const y = window.scrollY;
-  floats.forEach(el => {
-    const speed = parseFloat(el.dataset.speed || "0.15");
-    el.style.setProperty("--py", `${-y * speed}px`);
-  });
-  raf = null;
-}
-window.addEventListener("scroll", () => {
-  if (raf === null) raf = requestAnimationFrame(parallax);
-}, { passive: true });
+// Observe standard reveals, clip reveals, and welcome copy (triggers line reveals)
+document.querySelectorAll(".reveal, .reveal-clip, .welcome__copy").forEach(el => io.observe(el));
 
 /* ---------- Room slider (swap images) ---------- */
 const roomImages = [
