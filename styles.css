@@ -796,9 +796,7 @@ a { color: inherit; text-decoration: none; }
 
 .dish-card {
   position: relative;
-  perspective: 1400px;
   cursor: pointer;
-  /* Card grows on hover so back-face content has more room */
   transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
   z-index: 1;
 }
@@ -812,13 +810,14 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  transform: perspective(1400px) rotateY(0deg);
   transition: transform 0.78s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
 /* Flip on hover or keyboard focus */
 .dish-card:hover .dish-card__inner,
 .dish-card:focus-within .dish-card__inner {
-  transform: rotateY(180deg);
+  transform: perspective(1400px) rotateY(180deg);
 }
 
 /* ── Front face ── */
