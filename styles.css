@@ -501,9 +501,11 @@ a { color: inherit; text-decoration: none; }
 
 .philosophy__bg-img {
   width: 100%;
-  height: 100%;
+  height: 120%; /* extra height so parallax shift stays in-frame */
   object-fit: cover;
   display: block;
+  transform: translateY(var(--phil-shift, 0px)) scale(1.0);
+  will-change: transform;
 }
 
 .philosophy__overlay {
@@ -535,26 +537,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-mute);
   line-height: 1.75;
 }
-
-.philosophy__stamp {
-  margin: 0 auto 40px;
-  display: flex;
-  justify-content: center;
-}
-.stamp {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 1px solid var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  letter-spacing: 0.3em;
-  color: var(--red-soft);
-  animation: spin 18s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Stroke-to-fill big statement */
 .big-statement {
@@ -727,35 +709,198 @@ a { color: inherit; text-decoration: none; }
   margin-top: clamp(20px, 4vw, 60px);
 }
 
-.dish {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* =========================
+   Dish flip cards
+   ========================= */
+
+/* Card sizing — aspect ratio drives height in the masonry grid */
+.masonry-col--a .dish-card { aspect-ratio: 3/5; }
+.masonry-col--b .dish-card { aspect-ratio: 5/4; }
+.masonry-col--c .dish-card { aspect-ratio: 2/3; }
+
+.dish-card {
+  position: relative;
+  perspective: 1400px;
+  cursor: pointer;
 }
 
-.dish img {
-  width: 100%;
-  object-fit: cover;
-  display: block;
+.dish-card__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.78s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+/* Flip on hover or keyboard focus */
+.dish-card:hover .dish-card__inner,
+.dish-card:focus-within .dish-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* ── Front face ── */
+.dish-card__front {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
   border: 1px solid var(--line);
 }
 
-/* Tall cards in cols A and C */
-.masonry-col--a .dish img { aspect-ratio: 3/5; }
-.masonry-col--c .dish img { aspect-ratio: 2/3; }
-
-/* Medium cards in col B */
-.masonry-col--b .dish img { aspect-ratio: 5/4; }
-
-.dish__meta h4 {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  letter-spacing: 0.08em;
-  color: var(--red-soft);
-  font-weight: 500;
-  margin-bottom: 6px;
+.dish-card__front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.dish__meta p { color: var(--ink-mute); font-size: 0.92rem; }
+
+/* Slight pre-flip zoom on hover before card turns */
+.dish-card:hover .dish-card__front img {
+  transform: scale(1.05);
+}
+
+/* Name overlay at bottom of image */
+.dish-card__label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 36px 18px 16px;
+  background: linear-gradient(to top, rgba(10,4,5,0.92) 0%, transparent 100%);
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: opacity 0.25s ease;
+}
+.dish-card:hover .dish-card__label { opacity: 0; }
+
+.dish-card__hint {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red-soft);
+}
+
+/* blur-reveal applied to .dish-card__front — image starts zoomed+blurred */
+.dish-card__front.blur-reveal { overflow: hidden; }
+.dish-card__front.blur-reveal img {
+  transform: scale(1.12);
+  filter: blur(18px);
+  transition:
+    transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 1.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.dish-card__front.blur-reveal.is-in img {
+  transform: scale(1);
+  filter: blur(0);
+}
+/* keep hover scale working after reveal */
+.dish-card:hover .dish-card__front.blur-reveal.is-in img {
+  transform: scale(1.05);
+  filter: blur(0);
+}
+
+/* ── Back face (menu card) ── */
+.dish-card__back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  background: var(--bg-2);
+  border: 1px solid rgba(184, 35, 42, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(18px, 3vw, 36px);
+  overflow: hidden;
+}
+
+/* Subtle red vignette on back face */
+.dish-card__back::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(184,35,42,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.dish-card__back-body {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dish-card__back-body .eyebrow {
+  margin-bottom: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+}
+
+.dish-card__name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+/* Thin decorative divider */
+.dish-card__rule {
+  height: 1px;
+  background: linear-gradient(to right, var(--red) 0%, transparent 100%);
+  width: 100%;
+  margin: 4px 0;
+}
+
+.dish-card__desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+
+.dish-card__ingr {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.dish-card__ingr li {
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+  padding-left: 14px;
+  position: relative;
+}
+.dish-card__ingr li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--red-soft);
+  font-size: 0.7rem;
+  line-height: inherit;
+}
+
+.dish-card__price {
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: var(--red-soft);
+  letter-spacing: 0.12em;
+  font-weight: 500;
+}
 
 /* =========================
    Press — dominant + two secondary
@@ -1071,9 +1216,9 @@ a { color: inherit; text-decoration: none; }
   .taste__masonry { grid-template-columns: 1fr; }
   .masonry-col--b { margin-top: 0; }
   .masonry-col--c { display: block; margin-top: 0; }
-  .masonry-col--a .dish img,
-  .masonry-col--b .dish img,
-  .masonry-col--c .dish img { aspect-ratio: 4/3; }
+  .masonry-col--a .dish-card,
+  .masonry-col--b .dish-card,
+  .masonry-col--c .dish-card { aspect-ratio: 4/3; }
 
   /* Press */
   .press__band { grid-template-columns: 1fr; }

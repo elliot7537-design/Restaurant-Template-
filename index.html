@@ -137,10 +137,6 @@
         </p>
       </div>
 
-      <div class="philosophy__stamp">
-        <div class="stamp">BRASA · EST ·</div>
-      </div>
-
       <h2 class="big-statement stroke-fill-text">
         <span data-i18n="phil.big1">TRADITION</span><br/>
         <span data-i18n="phil.big2">MEETS</span><br/>
@@ -224,40 +220,121 @@
     <div class="taste__masonry">
       <!-- Column A — tall -->
       <div class="masonry-col masonry-col--a">
-        <article class="dish blur-reveal">
-          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800&auto=format&fit=crop&q=75" alt="Prime ribeye" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish1.n">PRIME RIBEYE · MESQUITE</h4>
-            <p data-i18n="dish1.d">45-day dry-aged, charred over mesquite, smoked salt, grilled spring onion.</p>
+        <article class="dish-card" tabindex="0" aria-label="Prime Ribeye — hover to view details">
+          <div class="dish-card__inner">
+            <div class="dish-card__front blur-reveal">
+              <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800&auto=format&fit=crop&q=75" alt="Prime ribeye" />
+              <div class="dish-card__label">
+                <span class="dish-card__hint" aria-hidden="true">hover</span>
+                <span data-i18n="dish1.n">PRIME RIBEYE · MESQUITE</span>
+              </div>
+            </div>
+            <div class="dish-card__back">
+              <div class="dish-card__back-body">
+                <span class="eyebrow">Prime Cut</span>
+                <h4 class="dish-card__name" data-i18n="dish1.n">PRIME RIBEYE · MESQUITE</h4>
+                <div class="dish-card__rule"></div>
+                <p class="dish-card__desc" data-i18n="dish1.d">45-day dry-aged, charred over mesquite, smoked salt, grilled spring onion.</p>
+                <ul class="dish-card__ingr">
+                  <li>45-day dry-aged beef</li>
+                  <li>Mesquite wood smoke</li>
+                  <li>Smoked sea salt</li>
+                  <li>Grilled spring onion</li>
+                  <li>Bone marrow butter</li>
+                </ul>
+                <div class="dish-card__price">MXN 680</div>
+              </div>
+            </div>
           </div>
         </article>
       </div>
 
       <!-- Column B — two short, offset down -->
       <div class="masonry-col masonry-col--b">
-        <article class="dish blur-reveal">
-          <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=600&auto=format&fit=crop&q=75" alt="Lobster" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
-            <p data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
+        <article class="dish-card" tabindex="0" aria-label="Lobster — hover to view details">
+          <div class="dish-card__inner">
+            <div class="dish-card__front blur-reveal">
+              <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=600&auto=format&fit=crop&q=75" alt="Lobster" />
+              <div class="dish-card__label">
+                <span class="dish-card__hint" aria-hidden="true">hover</span>
+                <span data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</span>
+              </div>
+            </div>
+            <div class="dish-card__back">
+              <div class="dish-card__back-body">
+                <span class="eyebrow">Coastal</span>
+                <h4 class="dish-card__name" data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
+                <div class="dish-card__rule"></div>
+                <p class="dish-card__desc" data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
+                <ul class="dish-card__ingr">
+                  <li>Whole Baja lobster</li>
+                  <li>Chile de árbol butter</li>
+                  <li>Charred lime</li>
+                  <li>Heirloom tortilla</li>
+                  <li>Epazote oil</li>
+                </ul>
+                <div class="dish-card__price">MXN 520</div>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="dish blur-reveal">
-          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=75" alt="Quail" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
-            <p data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
+
+        <article class="dish-card" tabindex="0" aria-label="Quail — hover to view details">
+          <div class="dish-card__inner">
+            <div class="dish-card__front blur-reveal">
+              <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=75" alt="Quail" />
+              <div class="dish-card__label">
+                <span class="dish-card__hint" aria-hidden="true">hover</span>
+                <span data-i18n="dish3.n">QUAIL · MOLE NEGRO</span>
+              </div>
+            </div>
+            <div class="dish-card__back">
+              <div class="dish-card__back-body">
+                <span class="eyebrow">Game Bird</span>
+                <h4 class="dish-card__name" data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
+                <div class="dish-card__rule"></div>
+                <p class="dish-card__desc" data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
+                <ul class="dish-card__ingr">
+                  <li>Free-range quail</li>
+                  <li>24-spice mole negro</li>
+                  <li>Black sesame</li>
+                  <li>Fermented black garlic</li>
+                  <li>Micro herbs</li>
+                </ul>
+                <div class="dish-card__price">MXN 385</div>
+              </div>
+            </div>
           </div>
         </article>
       </div>
 
       <!-- Column C — tall, shifted -->
       <div class="masonry-col masonry-col--c">
-        <article class="dish blur-reveal">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish4.n">LAMB BARBACOA</h4>
-            <p data-i18n="dish4.d">Agave-leaf wrapped, ember-pit cooked overnight, salsa borracha.</p>
+        <article class="dish-card" tabindex="0" aria-label="Lamb Barbacoa — hover to view details">
+          <div class="dish-card__inner">
+            <div class="dish-card__front blur-reveal">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
+              <div class="dish-card__label">
+                <span class="dish-card__hint" aria-hidden="true">hover</span>
+                <span data-i18n="dish4.n">LAMB BARBACOA</span>
+              </div>
+            </div>
+            <div class="dish-card__back">
+              <div class="dish-card__back-body">
+                <span class="eyebrow">Slow Fire</span>
+                <h4 class="dish-card__name" data-i18n="dish4.n">LAMB BARBACOA</h4>
+                <div class="dish-card__rule"></div>
+                <p class="dish-card__desc" data-i18n="dish4.d">Agave-leaf wrapped, ember-pit cooked overnight, salsa borracha.</p>
+                <ul class="dish-card__ingr">
+                  <li>Lamb shoulder</li>
+                  <li>Agave maguey leaf</li>
+                  <li>Ember pit slow-cook</li>
+                  <li>Salsa borracha</li>
+                  <li>Hand-pressed tortillas</li>
+                </ul>
+                <div class="dish-card__price">MXN 445</div>
+              </div>
+            </div>
           </div>
         </article>
       </div>

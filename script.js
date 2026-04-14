@@ -353,9 +353,22 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll(".stat__n").forEach(el => counterObserver.observe(el));
 
 /* ─────────────────────────────────────────────
-   8. STROKE-TO-FILL (Philosophy big statement)
+   8. PHILOSOPHY — parallax bg + stroke-to-fill
    ───────────────────────────────────────────── */
-const bigStatement = document.querySelector(".big-statement");
+const philSection   = document.querySelector(".philosophy");
+const philBgImg     = document.querySelector(".philosophy__bg-img");
+const bigStatement  = document.querySelector(".big-statement");
+
+function updatePhilosophyParallax() {
+  if (!philSection || !philBgImg) return;
+  const rect = philSection.getBoundingClientRect();
+  const wh = window.innerHeight;
+  // progress: 0 when section enters bottom, 1 when it leaves top
+  const progress = Math.max(0, Math.min(1, -rect.top / (rect.height + wh)));
+  // Shift image –40px → +40px as we scroll through the section
+  const shift = (progress - 0.5) * 80;
+  philBgImg.style.setProperty("--phil-shift", shift.toFixed(1) + "px");
+}
 
 function updateStrokeFill() {
   if (!bigStatement) return;
@@ -378,11 +391,15 @@ function updateStrokeFill() {
   );
 }
 
-window.addEventListener("scroll", updateStrokeFill, { passive: true });
+window.addEventListener("scroll", () => {
+  updateStrokeFill();
+  updatePhilosophyParallax();
+}, { passive: true });
 updateStrokeFill();
+updatePhilosophyParallax();
 
 /* ─────────────────────────────────────────────
-   9. EVENING CTA — subtle parallax
+   9. EVENING CTA — parallax
    ───────────────────────────────────────────── */
 const eveningBgImg = document.querySelector(".evening__bg-img");
 
@@ -399,7 +416,21 @@ function updateEveningParallax() {
 window.addEventListener("scroll", updateEveningParallax, { passive: true });
 
 /* ─────────────────────────────────────────────
-   10. MAGNETIC HOVER — buttons follow cursor
+   10. DISH CARD — touch/click toggle on mobile
+   ───────────────────────────────────────────── */
+const isTouchDevice = () => window.matchMedia("(hover: none)").matches;
+
+document.querySelectorAll(".dish-card").forEach(card => {
+  card.addEventListener("click", () => {
+    if (!isTouchDevice()) return;  // hover handles it on desktop
+    const inner = card.querySelector(".dish-card__inner");
+    const isFlipped = inner.style.transform === "rotateY(180deg)";
+    inner.style.transform = isFlipped ? "" : "rotateY(180deg)";
+  });
+});
+
+/* ─────────────────────────────────────────────
+   12. MAGNETIC HOVER — buttons follow cursor
    ───────────────────────────────────────────── */
 document.querySelectorAll(".magnetic-btn").forEach(btn => {
   btn.addEventListener("mousemove", (e) => {
@@ -417,7 +448,7 @@ document.querySelectorAll(".magnetic-btn").forEach(btn => {
 });
 
 /* ─────────────────────────────────────────────
-   11. ROOM SLIDER
+   13. ROOM SLIDER
    ───────────────────────────────────────────── */
 const roomImages = [
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=75",
@@ -445,7 +476,7 @@ document.querySelector(".room__arrow--prev")?.addEventListener("click", () => se
 document.querySelector(".room__arrow--next")?.addEventListener("click", () => setRoom(roomIdx + 1));
 
 /* ─────────────────────────────────────────────
-   12. YEAR STAMP
+   14. YEAR STAMP
    ───────────────────────────────────────────── */
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
