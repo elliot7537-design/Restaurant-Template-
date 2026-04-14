@@ -33,35 +33,75 @@
     </div>
   </header>
 
-  <!-- TOP FLOATING IMAGES -->
+  <!-- HERO -->
   <section class="hero" id="top">
-    <div class="float float--1 reveal" data-speed="0.15">
-      <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&auto=format&fit=crop&q=70" alt="Dining room" />
+    <!-- Cinematic background -->
+    <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1800&auto=format&fit=crop&q=80" alt="" aria-hidden="true" />
     </div>
-    <div class="float float--2 reveal" data-speed="0.25">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&auto=format&fit=crop&q=70" alt="Chef plating" />
-    </div>
-    <div class="float float--3 reveal" data-speed="0.2">
-      <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=500&auto=format&fit=crop&q=70" alt="Open flame" />
+    <div class="hero__veil"></div>
+
+    <!-- Text block (left) -->
+    <div class="hero__body">
+      <div class="hero__meta-row">
+        <span>Roma Norte · CDMX</span>
+        <span class="hero__meta-sep">—</span>
+        <span>Est. 2019</span>
+      </div>
+      <div class="hero__wordmark-wrap">
+        <h1 class="wordmark">Brasa</h1>
+      </div>
+      <div class="hero__lower">
+        <p class="hero__sub" data-i18n="hero.sub">Modern Mexican · Fire Kitchen</p>
+        <a href="#contact" class="btn btn--link" data-i18n="hero.cta">Make a reservation</a>
+      </div>
     </div>
 
-    <div class="hero__center">
-      <h1 class="wordmark">Brasa</h1>
-      <p class="hero__sub" data-i18n="hero.sub">Modern Mexican · Fire Kitchen</p>
-      <a href="#contact" class="btn btn--link" data-i18n="hero.cta">Make a reservation</a>
+    <!-- Floating accent image (right) -->
+    <div class="hero__accent">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&auto=format&fit=crop&q=75" alt="Chef at work" />
+      <div class="hero__accent-label">Open Kitchen</div>
+    </div>
+
+    <!-- Vertical scroll hint -->
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+
+    <!-- Ticker strip -->
+    <div class="hero__ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Fire Kitchen</span><span class="t-dot">·</span>
+        <span>Modern Mexican</span><span class="t-dot">·</span>
+        <span>Open Flame Only</span><span class="t-dot">·</span>
+        <span>Oaxacan Roots</span><span class="t-dot">·</span>
+        <span>Roma Norte</span><span class="t-dot">·</span>
+        <span>Fire Kitchen</span><span class="t-dot">·</span>
+        <span>Modern Mexican</span><span class="t-dot">·</span>
+        <span>Open Flame Only</span><span class="t-dot">·</span>
+        <span>Oaxacan Roots</span><span class="t-dot">·</span>
+        <span>Roma Norte</span><span class="t-dot">·</span>
+      </div>
     </div>
   </section>
 
   <!-- WELCOME -->
   <section class="welcome section">
     <div class="welcome__grid">
-      <div class="welcome__img reveal">
-        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=900&auto=format&fit=crop&q=75" alt="Brasa dining room" />
+      <div class="welcome__images">
+        <div class="welcome__img-main reveal-clip">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=900&auto=format&fit=crop&q=75" alt="Brasa dining room" />
+        </div>
+        <div class="welcome__img-accent reveal">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=75" alt="Signature dish" />
+        </div>
       </div>
       <div class="welcome__copy">
+        <span class="eyebrow">Welcome</span>
         <h2 class="h-display">
-          <span data-i18n="welcome.h1">WELCOME</span><br/>
-          <span data-i18n="welcome.h2">TO BRASA</span>
+          <span class="reveal-line"><span data-i18n="welcome.h1">WELCOME</span></span><br/>
+          <span class="reveal-line reveal-line--delay"><span data-i18n="welcome.h2">TO BRASA</span></span>
         </h2>
         <p data-i18n="welcome.p">
           Step inside Brasa, a dining room where Mexican heritage meets modern flourish. Smoke, salt and citrus — every dish tells a story of fire and patience.
@@ -153,29 +193,34 @@
       </div>
 
       <div class="taste__stack">
-        <article class="dish reveal">
-          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=700&auto=format&fit=crop&q=75" alt="Prime ribeye" />
+        <!-- Featured: full-width -->
+        <article class="dish dish--featured reveal-clip">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=75" alt="Prime ribeye" />
           <div class="dish__meta">
             <h4 data-i18n="dish1.n">PRIME RIBEYE · MESQUITE</h4>
             <p data-i18n="dish1.d">45-day dry-aged, charred over mesquite, smoked salt, grilled spring onion.</p>
           </div>
         </article>
-        <article class="dish reveal">
-          <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=700&auto=format&fit=crop&q=75" alt="Lobster" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
-            <p data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
-          </div>
-        </article>
-        <article class="dish reveal">
-          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&auto=format&fit=crop&q=75" alt="Quail" />
-          <div class="dish__meta">
-            <h4 data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
-            <p data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
-          </div>
-        </article>
-        <article class="dish reveal">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
+        <!-- Side-by-side pair -->
+        <div class="dish__row">
+          <article class="dish reveal-clip">
+            <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=600&auto=format&fit=crop&q=75" alt="Lobster" />
+            <div class="dish__meta">
+              <h4 data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
+              <p data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
+            </div>
+          </article>
+          <article class="dish reveal-clip">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=75" alt="Quail" />
+            <div class="dish__meta">
+              <h4 data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
+              <p data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
+            </div>
+          </article>
+        </div>
+        <!-- Featured: full-width -->
+        <article class="dish dish--featured reveal-clip">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
           <div class="dish__meta">
             <h4 data-i18n="dish4.n">LAMB BARBACOA</h4>
             <p data-i18n="dish4.d">Agave-leaf wrapped, ember-pit cooked overnight, salsa borracha.</p>
