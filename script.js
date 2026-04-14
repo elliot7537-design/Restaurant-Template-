@@ -28,6 +28,12 @@ const i18n = {
     "nav.contact": "Contact",
     "nav.book": "Book a Table",
 
+    "ticker.1": "Fire Kitchen",
+    "ticker.2": "Modern Mexican",
+    "ticker.3": "Open Flame Only",
+    "ticker.4": "Oaxacan Roots",
+    "ticker.5": "Roma Norte",
+
     "hero.sub": "Modern Mexican · Fire Kitchen",
     "hero.cta": "Make a reservation",
 
@@ -111,6 +117,12 @@ const i18n = {
     "nav.faq": "Preguntas",
     "nav.contact": "Contacto",
     "nav.book": "Reservar Mesa",
+
+    "ticker.1": "Cocina de Fuego",
+    "ticker.2": "Mexicana Moderna",
+    "ticker.3": "Solo Llama Viva",
+    "ticker.4": "Ra\u00EDces Oaxaque\u00F1as",
+    "ticker.5": "Roma Norte",
 
     "hero.sub": "Cocina Mexicana Moderna \u00B7 Al Fuego",
     "hero.cta": "Reservar ahora",
