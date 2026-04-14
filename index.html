@@ -148,49 +148,51 @@
   </section>
 
   <!-- ═══════════════════════════════════════
-       GALLERY — auto-play crossfade carousel
+       GALLERY — scroll-driven horizontal
        ═══════════════════════════════════════ -->
   <section class="gallery" id="gallery">
+    <div class="gallery__sticky">
 
-    <div class="gallery__slide is-active">
-      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&auto=format&fit=crop&q=80" alt="The Dining Room" />
-      <div class="gallery__overlay"></div>
-      <div class="gallery__caption">
-        <span class="eyebrow gallery__num">01 — 03</span>
-        <h3 class="gallery__title" data-i18n="room.label">THE DINING ROOM</h3>
+      <div class="gallery__strip">
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&auto=format&fit=crop&q=80" alt="The Dining Room" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">01 — 03</span>
+            <h3 class="gallery__title" data-i18n="room.label">THE DINING ROOM</h3>
+          </div>
+        </div>
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1600&auto=format&fit=crop&q=80" alt="The Bar" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">02 — 03</span>
+            <h3 class="gallery__title">THE BAR</h3>
+          </div>
+        </div>
+        <div class="gallery__slide">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&auto=format&fit=crop&q=80" alt="The Open Kitchen" />
+          <div class="gallery__overlay"></div>
+          <div class="gallery__caption">
+            <span class="eyebrow gallery__num">03 — 03</span>
+            <h3 class="gallery__title">THE OPEN KITCHEN</h3>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="gallery__slide">
-      <img src="https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1600&auto=format&fit=crop&q=80" alt="The Bar" />
-      <div class="gallery__overlay"></div>
-      <div class="gallery__caption">
-        <span class="eyebrow gallery__num">02 — 03</span>
-        <h3 class="gallery__title">THE BAR</h3>
+      <!-- Progress indicator -->
+      <div class="gallery__progress" aria-hidden="true">
+        <div class="gallery__progress-fill"></div>
       </div>
-    </div>
 
-    <div class="gallery__slide">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1600&auto=format&fit=crop&q=80" alt="The Open Kitchen" />
-      <div class="gallery__overlay"></div>
-      <div class="gallery__caption">
-        <span class="eyebrow gallery__num">03 — 03</span>
-        <h3 class="gallery__title">THE OPEN KITCHEN</h3>
+      <!-- Dots -->
+      <div class="gallery__dots" aria-hidden="true">
+        <div class="gallery__dot is-active" data-idx="0"></div>
+        <div class="gallery__dot" data-idx="1"></div>
+        <div class="gallery__dot" data-idx="2"></div>
       </div>
-    </div>
 
-    <!-- Dots -->
-    <div class="gallery__dots" aria-hidden="true">
-      <div class="gallery__dot is-active" data-idx="0"></div>
-      <div class="gallery__dot" data-idx="1"></div>
-      <div class="gallery__dot" data-idx="2"></div>
     </div>
-
-    <!-- Progress bar -->
-    <div class="gallery__progress" aria-hidden="true">
-      <div class="gallery__progress-fill"></div>
-    </div>
-
   </section>
 
   <!-- ═══════════════════════════════════════

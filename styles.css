@@ -486,19 +486,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--bg);
   overflow: hidden;
   position: relative;
-}
-
-/* Soft dark fade off the bottom so it dissolves into the gallery */
-.philosophy::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: clamp(80px, 12vw, 160px);
-  background: linear-gradient(to bottom, transparent, var(--bg));
-  pointer-events: none;
-  z-index: 2;
+  padding-bottom: 0;
 }
 
 .philosophy__grid {
@@ -568,32 +556,38 @@ a { color: inherit; text-decoration: none; }
    ========================= */
 
 /* =========================
-   Gallery — auto-play crossfade carousel
+   Gallery — scroll-driven horizontal
    ========================= */
+
+/* Outer section provides scroll distance */
 .gallery {
+  height: 300vh;
   position: relative;
-  height: 100vh;
-  overflow: hidden;
-  /* Entry: section fades and rises into place */
-  opacity: 0;
-  transform: translateY(48px);
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.gallery.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Sticky panel — no initial offset, sits flush against philosophy */
+.gallery__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Horizontal strip of 3 full-viewport slides */
+.gallery__strip {
+  display: flex;
+  width: 300vw;
+  height: 100%;
+  will-change: transform;
 }
 
 .gallery__slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.gallery__slide.is-active {
-  opacity: 1;
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
 }
 
 .gallery__slide img {
@@ -620,14 +614,6 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   bottom: clamp(48px, 7vh, 80px);
   left: clamp(32px, 6vw, 80px);
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s;
-}
-
-.gallery__slide.is-active .gallery__caption {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .gallery__num {
@@ -644,7 +630,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
 }
 
-/* Thin progress bar at bottom — JS resets & re-animates on each slide change */
+/* Thin progress bar at bottom */
 .gallery__progress {
   position: absolute;
   bottom: 0;
@@ -652,13 +638,13 @@ a { color: inherit; text-decoration: none; }
   right: 0;
   height: 2px;
   background: rgba(255,255,255,0.08);
-  z-index: 10;
 }
 
 .gallery__progress-fill {
   height: 100%;
   background: var(--red-soft);
   width: 0%;
+  transition: width 0.05s linear;
 }
 
 /* Dots */
@@ -669,7 +655,6 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   gap: 10px;
   align-items: center;
-  z-index: 10;
 }
 
 .gallery__dot {
@@ -678,7 +663,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%;
   border: 1px solid rgba(243,231,228,0.4);
   background: transparent;
-  cursor: pointer;
   transition: background 0.4s, border-color 0.4s, transform 0.4s;
 }
 
