@@ -450,6 +450,11 @@ function updateGalleryScroll() {
   const shift = progress * (NUM_SLIDES - 1) * 100;
   galleryStrip.style.transform = `translateX(-${shift.toFixed(3)}vw)`;
 
+  // Entry curtain: fade from 1 → 0 over the first 18% of scroll progress
+  // so the gallery image gradually reveals from the dark as you enter
+  const entryOpacity = Math.max(0, 1 - progress / 0.18);
+  gallerySection.style.setProperty("--gallery-entry", entryOpacity.toFixed(3));
+
   // Progress bar
   if (galleryFill) galleryFill.style.width = (progress * 100).toFixed(1) + "%";
 
