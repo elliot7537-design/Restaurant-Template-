@@ -574,13 +574,15 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   height: 100vh;
   overflow: hidden;
-  /* Wipe-up entry: clip-path reveals from bottom as section scrolls into view */
-  clip-path: inset(100% 0 0 0);
-  transition: clip-path 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+  /* Entry: section fades and rises into place */
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .gallery.is-visible {
-  clip-path: inset(0% 0 0 0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery__slide {
