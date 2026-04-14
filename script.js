@@ -1,12 +1,24 @@
 /* =========================================================
    Brasa — interactions
-   - Language toggle (EN / ES)
-   - Scroll reveal via IntersectionObserver
-   - Light parallax on floating hero images
-   - Year stamp, slider stub
+   =========================================================
+   Sections:
+   1.  Translations (EN / ES)
+   2.  Language switching
+   3.  Scroll reveal
+   4.  Draw-line observer
+   5.  Blur-reveal observer
+   6.  Text scramble
+   7.  Animated counters
+   8.  Stroke-to-fill (Philosophy section)
+   9.  Evening CTA parallax
+   10. Magnetic hover buttons
+   11. Room slider
+   12. Year stamp
    ========================================================= */
 
-/* ---------- Translations ---------- */
+/* ─────────────────────────────────────────────
+   1. TRANSLATIONS
+   ───────────────────────────────────────────── */
 const i18n = {
   en: {
     "brand": "Brasa",
@@ -19,9 +31,13 @@ const i18n = {
     "hero.sub": "Modern Mexican · Fire Kitchen",
     "hero.cta": "Make a reservation",
 
+    "welcome.eyebrow": "Welcome",
     "welcome.h1": "WELCOME",
     "welcome.h2": "TO BRASA",
     "welcome.p": "Step inside Brasa, a dining room where Mexican heritage meets modern flourish. Smoke, salt and citrus — every dish tells a story of fire and patience.",
+    "stat.years": "Years",
+    "stat.courses": "Courses",
+    "stat.seats": "Seats",
 
     "phil.lead": "The Brasa experience is built on heat, honesty and harvest. Each plate draws on the flavours of Mexico — honoring tradition while reaching forward.",
     "phil.big1": "TRADITION",
@@ -35,6 +51,7 @@ const i18n = {
     "chef.tagline": "Brasa is the vision of Chef Mateo, shaped by his Oaxacan roots and years in some of the world's most respected fire kitchens.",
     "chef.p1": "Each plate at Brasa is a letter home. A slow-cooked barbacoa lamb, a prime ribeye kissed by mesquite, lobster bathed in chile de árbol butter — every bite travels between memory and reinvention.",
     "chef.p2": "Our kitchen is open flame only. No shortcuts, no hiding. Just embers, iron, and the patience of hands that know the fire.",
+    "chef.cta": "Explore the Menu",
 
     "taste.h1": "A TASTE",
     "taste.h2": "OF BRASA",
@@ -50,12 +67,12 @@ const i18n = {
     "dish4.n": "LAMB BARBACOA",
     "dish4.d": "Agave-leaf wrapped, ember-pit cooked overnight, salsa borracha.",
 
-    "press1": "\"A cathedral of smoke and spice. Brasa redefines what modern Mexican cuisine can be.\"",
-    "press2": "\"Dining at the chef's table was unforgettable. Intimate, primal and delicious.\"",
-    "press3": "\"From the first mezcal to the last ember, flawless.\"",
+    "press1": "\u201CA cathedral of smoke and spice. Brasa redefines what modern Mexican cuisine can be.\u201D",
+    "press2": "\u201CDining at the chef\u2019s table was unforgettable. Intimate, primal and delicious.\u201D",
+    "press3": "\u201CFrom the first mezcal to the last ember, flawless.\u201D",
 
     "faq1.q": "Do I need to book a table in advance?",
-    "faq1.a": "We recommend reserving at least 2 weeks ahead, especially for weekends and the chef's counter.",
+    "faq1.a": "We recommend reserving at least 2 weeks ahead, especially for weekends and the chef\u2019s counter.",
     "faq2.q": "Where do your ingredients come from?",
     "faq2.a": "We source prime cuts from small ranches in Sonora, lobster from Baja California, and produce from local Mexican farms.",
     "faq3.q": "Do you cater for dietary needs?",
@@ -65,13 +82,13 @@ const i18n = {
     "faq5.q": "Is there parking nearby?",
     "faq5.a": "Valet service is available from 6pm. Secure parking is located one block south.",
     "faq6.q": "What are your opening hours?",
-    "faq6.a": "Tuesday to Sunday, 6pm — 11pm. Closed Mondays.",
+    "faq6.a": "Tuesday to Sunday, 6pm \u2014 11pm. Closed Mondays.",
 
     "contact.addr": "ADDRESS",
     "contact.phone": "PHONE",
     "contact.email": "EMAIL",
     "contact.hours": "HOURS",
-    "contact.hoursv": "Tue — Sun · 6pm – 11pm",
+    "contact.hoursv": "Tue \u2014 Sun \u00B7 6pm \u2013 11pm",
     "contact.book": "BOOK NOW",
 
     "eve.h1": "AN EVENING",
@@ -79,7 +96,7 @@ const i18n = {
     "eve.p": "An intimate tasting menu of nine courses. Paired mezcal, natural wine, and stories from the fire.",
     "eve.cta": "MAKE A RESERVATION",
 
-    "foot.tag": "Modern Mexican · Fire Kitchen",
+    "foot.tag": "Modern Mexican \u00B7 Fire Kitchen",
     "foot.nav": "NAVIGATE",
     "foot.legal": "LEGAL",
     "foot.priv": "Privacy",
@@ -89,100 +106,104 @@ const i18n = {
 
   es: {
     "brand": "Brasa",
-    "nav.menu": "Menú",
+    "nav.menu": "Men\u00FA",
     "nav.story": "Historia",
     "nav.faq": "Preguntas",
     "nav.contact": "Contacto",
     "nav.book": "Reservar Mesa",
 
-    "hero.sub": "Cocina Mexicana Moderna · Al Fuego",
+    "hero.sub": "Cocina Mexicana Moderna \u00B7 Al Fuego",
     "hero.cta": "Reservar ahora",
 
+    "welcome.eyebrow": "Bienvenidos",
     "welcome.h1": "BIENVENIDOS",
     "welcome.h2": "A BRASA",
-    "welcome.p": "Entra a Brasa, un comedor donde la herencia mexicana se encuentra con el refinamiento moderno. Humo, sal y cítricos — cada plato cuenta una historia de fuego y paciencia.",
+    "welcome.p": "Entra a Brasa, un comedor donde la herencia mexicana se encuentra con el refinamiento moderno. Humo, sal y c\u00EDtricos \u2014 cada plato cuenta una historia de fuego y paciencia.",
+    "stat.years": "A\u00F1os",
+    "stat.courses": "Tiempos",
+    "stat.seats": "Asientos",
 
-    "phil.lead": "La experiencia Brasa se construye sobre fuego, honestidad y cosecha. Cada plato bebe de los sabores de México — honrando la tradición y mirando hacia adelante.",
-    "phil.big1": "TRADICIÓN",
+    "phil.lead": "La experiencia Brasa se construye sobre fuego, honestidad y cosecha. Cada plato bebe de los sabores de M\u00E9xico \u2014 honrando la tradici\u00F3n y mirando hacia adelante.",
+    "phil.big1": "TRADICI\u00D3N",
     "phil.big2": "SE ENCUENTRA",
     "phil.big3": "CON EL FUEGO",
 
     "room.label": "EL COMEDOR",
 
     "chef.name": "CHEF MATEO RIVAS",
-    "chef.role": "CHEF EJECUTIVO · PROPIETARIO",
-    "chef.tagline": "Brasa es la visión del Chef Mateo, moldeada por sus raíces oaxaqueñas y años en algunas de las cocinas de fuego más respetadas del mundo.",
-    "chef.p1": "Cada plato en Brasa es una carta a casa. Barbacoa de cordero cocida lentamente, ribeye premium besado por mezquite, langosta bañada en mantequilla de chile de árbol — cada bocado viaja entre la memoria y la reinvención.",
+    "chef.role": "CHEF EJECUTIVO \u00B7 PROPIETARIO",
+    "chef.tagline": "Brasa es la visi\u00F3n del Chef Mateo, moldeada por sus ra\u00EDces oaxaque\u00F1as y a\u00F1os en algunas de las cocinas de fuego m\u00E1s respetadas del mundo.",
+    "chef.p1": "Cada plato en Brasa es una carta a casa. Barbacoa de cordero cocida lentamente, ribeye premium besado por mezquite, langosta ba\u00F1ada en mantequilla de chile de \u00E1rbol \u2014 cada bocado viaja entre la memoria y la reinvenci\u00F3n.",
     "chef.p2": "Nuestra cocina es solo a fuego abierto. Sin atajos, sin escondites. Solo brasas, hierro y la paciencia de manos que conocen el fuego.",
+    "chef.cta": "Explorar el Men\u00FA",
 
     "taste.h1": "UN SABOR",
     "taste.h2": "DE BRASA",
-    "taste.p": "Un viaje de fuego del primer al último bocado. Cortes premium, mariscos costeros y caza — maridados con agave y humo.",
-    "taste.cta": "Ver Menú Completo",
+    "taste.p": "Un viaje de fuego del primer al \u00FAltimo bocado. Cortes premium, mariscos costeros y caza \u2014 maridados con agave y humo.",
+    "taste.cta": "Ver Men\u00FA Completo",
 
-    "dish1.n": "RIBEYE PREMIUM · MEZQUITE",
-    "dish1.d": "Añejado en seco 45 días, asado sobre mezquite, sal ahumada, cebolla cambray a la parrilla.",
-    "dish2.n": "LANGOSTA · CHILE DE ÁRBOL",
-    "dish2.d": "Langosta entera de Baja, mantequilla de chile, lima asada, tortilla de maíz criollo.",
-    "dish3.n": "CODORNIZ · MOLE NEGRO",
-    "dish3.d": "Codorniz rostizada, mole oaxaqueño de 24 ingredientes, ajonjolí, ajo negro.",
+    "dish1.n": "RIBEYE PREMIUM \u00B7 MEZQUITE",
+    "dish1.d": "A\u00F1ejado en seco 45 d\u00EDas, asado sobre mezquite, sal ahumada, cebolla cambray a la parrilla.",
+    "dish2.n": "LANGOSTA \u00B7 CHILE DE \u00C1RBOL",
+    "dish2.d": "Langosta entera de Baja, mantequilla de chile, lima asada, tortilla de ma\u00EDz criollo.",
+    "dish3.n": "CODORNIZ \u00B7 MOLE NEGRO",
+    "dish3.d": "Codorniz rostizada, mole oaxaque\u00F1o de 24 ingredientes, ajonjol\u00ED, ajo negro.",
     "dish4.n": "BARBACOA DE CORDERO",
     "dish4.d": "Envuelto en penca de maguey, cocido toda la noche en horno de tierra, salsa borracha.",
 
-    "press1": "\"Una catedral de humo y especias. Brasa redefine lo que puede ser la cocina mexicana moderna.\"",
-    "press2": "\"Cenar en la mesa del chef fue inolvidable. Íntimo, primal y delicioso.\"",
-    "press3": "\"Desde el primer mezcal hasta la última brasa, impecable.\"",
+    "press1": "\u201CUna catedral de humo y especias. Brasa redefine lo que puede ser la cocina mexicana moderna.\u201D",
+    "press2": "\u201CCenar en la mesa del chef fue inolvidable. \u00CDntimo, primal y delicioso.\u201D",
+    "press3": "\u201CDesde el primer mezcal hasta la \u00FAltima brasa, impecable.\u201D",
 
-    "faq1.q": "¿Necesito reservar con anticipación?",
-    "faq1.a": "Recomendamos reservar con al menos 2 semanas de anticipación, especialmente para fines de semana y la barra del chef.",
-    "faq2.q": "¿De dónde provienen sus ingredientes?",
-    "faq2.a": "Nuestros cortes premium vienen de pequeños ranchos de Sonora, la langosta de Baja California y los productos de granjas locales mexicanas.",
-    "faq3.q": "¿Atienden necesidades dietéticas especiales?",
-    "faq3.a": "Sí. Contamos con menús vegetarianos, sin gluten y para alergias con 24 horas de anticipación.",
-    "faq4.q": "¿Puedo organizar un evento privado en Brasa?",
-    "faq4.a": "Por supuesto. Nuestro salón privado Ember Room acomoda hasta 18 comensales para menús degustación y celebraciones.",
-    "faq5.q": "¿Hay estacionamiento cercano?",
+    "faq1.q": "\u00BFNecesito reservar con anticipaci\u00F3n?",
+    "faq1.a": "Recomendamos reservar con al menos 2 semanas de anticipaci\u00F3n, especialmente para fines de semana y la barra del chef.",
+    "faq2.q": "\u00BFDe d\u00F3nde provienen sus ingredientes?",
+    "faq2.a": "Nuestros cortes premium vienen de peque\u00F1os ranchos de Sonora, la langosta de Baja California y los productos de granjas locales mexicanas.",
+    "faq3.q": "\u00BFAtienden necesidades diet\u00E9ticas especiales?",
+    "faq3.a": "S\u00ED. Contamos con men\u00FAs vegetarianos, sin gluten y para alergias con 24 horas de anticipaci\u00F3n.",
+    "faq4.q": "\u00BFPuedo organizar un evento privado en Brasa?",
+    "faq4.a": "Por supuesto. Nuestro sal\u00F3n privado Ember Room acomoda hasta 18 comensales para men\u00FAs degustaci\u00F3n y celebraciones.",
+    "faq5.q": "\u00BFHay estacionamiento cercano?",
     "faq5.a": "Servicio de valet disponible a partir de las 6pm. Estacionamiento seguro a una cuadra al sur.",
-    "faq6.q": "¿Cuál es su horario?",
-    "faq6.a": "Martes a domingo, 6pm — 11pm. Cerrado los lunes.",
+    "faq6.q": "\u00BFCu\u00E1l es su horario?",
+    "faq6.a": "Martes a domingo, 6pm \u2014 11pm. Cerrado los lunes.",
 
-    "contact.addr": "DIRECCIÓN",
-    "contact.phone": "TELÉFONO",
+    "contact.addr": "DIRECCI\u00D3N",
+    "contact.phone": "TEL\u00C9FONO",
     "contact.email": "CORREO",
     "contact.hours": "HORARIO",
-    "contact.hoursv": "Mar — Dom · 6pm – 11pm",
+    "contact.hoursv": "Mar \u2014 Dom \u00B7 6pm \u2013 11pm",
     "contact.book": "RESERVAR",
 
     "eve.h1": "UNA NOCHE",
     "eve.h2": "EN BRASA",
-    "eve.p": "Un menú degustación íntimo de nueve tiempos. Mezcales maridados, vino natural e historias del fuego.",
-    "eve.cta": "HACER UNA RESERVACIÓN",
+    "eve.p": "Un men\u00FA degustaci\u00F3n \u00EDntimo de nueve tiempos. Mezcales maridados, vino natural e historias del fuego.",
+    "eve.cta": "HACER UNA RESERVACI\u00D3N",
 
-    "foot.tag": "Cocina Mexicana Moderna · Al Fuego",
+    "foot.tag": "Cocina Mexicana Moderna \u00B7 Al Fuego",
     "foot.nav": "NAVEGAR",
     "foot.legal": "LEGAL",
     "foot.priv": "Privacidad",
-    "foot.tos": "Términos",
+    "foot.tos": "T\u00E9rminos",
     "foot.cookies": "Cookies"
   }
 };
 
-/* ---------- Language switching ---------- */
+/* ─────────────────────────────────────────────
+   2. LANGUAGE SWITCHING
+   ───────────────────────────────────────────── */
 function setLanguage(lang) {
   const dict = i18n[lang] || i18n.en;
   document.documentElement.lang = lang;
-
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (dict[key] != null) el.textContent = dict[key];
   });
-
   document.querySelectorAll(".lang__btn").forEach(btn => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle("is-active", active);
     btn.setAttribute("aria-pressed", active ? "true" : "false");
   });
-
   try { localStorage.setItem("brasa.lang", lang); } catch (_) {}
 }
 
@@ -190,7 +211,6 @@ document.querySelectorAll(".lang__btn").forEach(btn => {
   btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
 });
 
-// Init language — remember user preference, fall back to browser
 (function initLang() {
   let saved = null;
   try { saved = localStorage.getItem("brasa.lang"); } catch (_) {}
@@ -198,20 +218,207 @@ document.querySelectorAll(".lang__btn").forEach(btn => {
   setLanguage(saved || browser);
 })();
 
-/* ---------- Scroll reveal ---------- */
-const io = new IntersectionObserver((entries) => {
+/* ─────────────────────────────────────────────
+   3. SCROLL REVEAL
+   ───────────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("is-in");
-      io.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-// Observe standard reveals, clip reveals, and welcome copy (triggers line reveals)
-document.querySelectorAll(".reveal, .reveal-clip, .welcome__copy").forEach(el => io.observe(el));
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
-/* ---------- Room slider (swap images) ---------- */
+/* ─────────────────────────────────────────────
+   4. DRAW-LINE
+   ───────────────────────────────────────────── */
+const drawLineObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-in");
+      drawLineObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll(".draw-line").forEach(el => drawLineObserver.observe(el));
+
+/* ─────────────────────────────────────────────
+   5. BLUR-REVEAL
+   ───────────────────────────────────────────── */
+const blurRevealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-in");
+      blurRevealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+
+document.querySelectorAll(".blur-reveal").forEach(el => blurRevealObserver.observe(el));
+
+/* ─────────────────────────────────────────────
+   6. TEXT SCRAMBLE
+   ───────────────────────────────────────────── */
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\u00B7\u2014\u2022";
+const scrambledEls = new WeakSet();
+
+function scrambleIn(el) {
+  if (scrambledEls.has(el)) return;
+  scrambledEls.add(el);
+
+  // Collect all text nodes in the element (preserves DOM structure)
+  const textNodes = [];
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.trim().length > 0) {
+      textNodes.push({ node, original: node.nodeValue });
+    }
+  }
+  if (textNodes.length === 0) return;
+
+  const totalChars = textNodes.reduce((s, t) => s + t.original.replace(/\s/g, "").length, 0);
+  let revealedCount = 0;
+  const speed = Math.max(18, Math.min(36, Math.round(700 / totalChars)));
+
+  const tick = () => {
+    revealedCount += Math.ceil(totalChars / 18);
+    let charIdx = 0;
+
+    textNodes.forEach(({ node, original }) => {
+      node.nodeValue = original.split("").map((char) => {
+        if (/\s/.test(char)) return char;
+        const pos = charIdx++;
+        if (pos < revealedCount) return char;
+        return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      }).join("");
+    });
+
+    if (revealedCount < totalChars + totalChars * 0.15) {
+      setTimeout(tick, speed);
+    } else {
+      // Ensure final state is clean
+      textNodes.forEach(({ node, original }) => { node.nodeValue = original; });
+    }
+  };
+
+  // Small delay so it's noticeable
+  setTimeout(tick, 80);
+}
+
+const scrambleObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      scrambleIn(entry.target);
+      scrambleObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2, rootMargin: "0px 0px -30px 0px" });
+
+document.querySelectorAll(".scramble-text").forEach(el => scrambleObserver.observe(el));
+
+/* ─────────────────────────────────────────────
+   7. ANIMATED COUNTERS
+   ───────────────────────────────────────────── */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  if (isNaN(target)) return;
+  const duration = 1800;
+  const start = performance.now();
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function update(now) {
+    const progress = Math.min(1, (now - start) / duration);
+    el.textContent = Math.round(easeOutCubic(progress) * target);
+    if (progress < 1) requestAnimationFrame(update);
+  }
+
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.6 });
+
+document.querySelectorAll(".stat__n").forEach(el => counterObserver.observe(el));
+
+/* ─────────────────────────────────────────────
+   8. STROKE-TO-FILL (Philosophy big statement)
+   ───────────────────────────────────────────── */
+const bigStatement = document.querySelector(".big-statement");
+
+function updateStrokeFill() {
+  if (!bigStatement) return;
+  const rect = bigStatement.getBoundingClientRect();
+  const wh = window.innerHeight;
+
+  // progress 0 → element enters viewport bottom
+  // progress 1 → element is 20% from top
+  const progress = Math.max(0, Math.min(1,
+    (wh * 0.85 - rect.top) / (wh * 0.65)
+  ));
+
+  bigStatement.style.setProperty("--fill-pct", Math.round(progress * 100) + "%");
+
+  // Fade stroke as fill progresses
+  const strokeAlpha = (0.35 * (1 - progress)).toFixed(3);
+  bigStatement.style.setProperty(
+    "-webkit-text-stroke-color",
+    `rgba(243, 231, 228, ${strokeAlpha})`
+  );
+}
+
+window.addEventListener("scroll", updateStrokeFill, { passive: true });
+updateStrokeFill();
+
+/* ─────────────────────────────────────────────
+   9. EVENING CTA — subtle parallax
+   ───────────────────────────────────────────── */
+const eveningBgImg = document.querySelector(".evening__bg-img");
+
+function updateEveningParallax() {
+  if (!eveningBgImg) return;
+  const section = eveningBgImg.closest(".evening");
+  if (!section) return;
+  const rect = section.getBoundingClientRect();
+  const progress = Math.max(0, Math.min(1, -rect.top / rect.height));
+  const shift = progress * 40; // max 40px shift
+  eveningBgImg.style.transform = `scale(1.04) translateY(${shift}px)`;
+}
+
+window.addEventListener("scroll", updateEveningParallax, { passive: true });
+
+/* ─────────────────────────────────────────────
+   10. MAGNETIC HOVER — buttons follow cursor
+   ───────────────────────────────────────────── */
+document.querySelectorAll(".magnetic-btn").forEach(btn => {
+  btn.addEventListener("mousemove", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.38;
+    const dy = (e.clientY - cy) * 0.38;
+    btn.style.transform = `translate(${dx}px, ${dy}px)`;
+  });
+
+  btn.addEventListener("mouseleave", () => {
+    btn.style.transform = "";
+  });
+});
+
+/* ─────────────────────────────────────────────
+   11. ROOM SLIDER
+   ───────────────────────────────────────────── */
 const roomImages = [
   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&auto=format&fit=crop&q=75",
   "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=1200&auto=format&fit=crop&q=75",
@@ -220,14 +427,32 @@ const roomImages = [
 let roomIdx = 0;
 const roomStageImg = document.querySelector(".room__stage img");
 const roomCounter = document.querySelector(".room__label small");
+
 function setRoom(i) {
   roomIdx = (i + roomImages.length) % roomImages.length;
-  if (roomStageImg) roomStageImg.src = roomImages[roomIdx];
+  if (roomStageImg) {
+    roomStageImg.style.opacity = "0";
+    setTimeout(() => {
+      roomStageImg.src = roomImages[roomIdx];
+      roomStageImg.style.opacity = "1";
+    }, 200);
+  }
   if (roomCounter) roomCounter.textContent = `0${roomIdx + 1} / 0${roomImages.length}`;
 }
+
+if (roomStageImg) roomStageImg.style.transition = "opacity 0.3s ease";
 document.querySelector(".room__arrow--prev")?.addEventListener("click", () => setRoom(roomIdx - 1));
 document.querySelector(".room__arrow--next")?.addEventListener("click", () => setRoom(roomIdx + 1));
 
-/* ---------- Year ---------- */
+/* ─────────────────────────────────────────────
+   12. YEAR STAMP
+   ───────────────────────────────────────────── */
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ─────────────────────────────────────────────
+   FAQ row stagger helper
+   ───────────────────────────────────────────── */
+document.querySelectorAll(".faq__row").forEach((row, i) => {
+  row.style.setProperty("--row-i", i);
+});

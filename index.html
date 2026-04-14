@@ -28,20 +28,17 @@
           <span class="lang__sep">/</span>
           <button class="lang__btn" data-lang="es" aria-pressed="false">ES</button>
         </div>
-        <a href="#contact" class="btn btn--ghost" data-i18n="nav.book">Book a Table</a>
+        <a href="#contact" class="btn btn--ghost magnetic-btn" data-i18n="nav.book">Book a Table</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <!-- Cinematic background -->
     <div class="hero__bg">
       <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1800&auto=format&fit=crop&q=80" alt="" aria-hidden="true" />
     </div>
     <div class="hero__veil"></div>
-
-    <!-- Text block (left) -->
     <div class="hero__body">
       <div class="hero__meta-row">
         <span>Roma Norte · CDMX</span>
@@ -53,23 +50,17 @@
       </div>
       <div class="hero__lower">
         <p class="hero__sub" data-i18n="hero.sub">Modern Mexican · Fire Kitchen</p>
-        <a href="#contact" class="btn btn--link" data-i18n="hero.cta">Make a reservation</a>
+        <a href="#contact" class="btn btn--link magnetic-btn" data-i18n="hero.cta">Make a reservation</a>
       </div>
     </div>
-
-    <!-- Floating accent image (right) -->
     <div class="hero__accent">
       <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&auto=format&fit=crop&q=75" alt="Chef at work" />
       <div class="hero__accent-label">Open Kitchen</div>
     </div>
-
-    <!-- Vertical scroll hint -->
     <div class="hero__scroll" aria-hidden="true">
       <div class="hero__scroll-line"></div>
       <span>Scroll</span>
     </div>
-
-    <!-- Ticker strip -->
     <div class="hero__ticker" aria-hidden="true">
       <div class="ticker__track">
         <span>Fire Kitchen</span><span class="t-dot">·</span>
@@ -86,54 +77,76 @@
     </div>
   </section>
 
-  <!-- WELCOME -->
-  <section class="welcome section">
-    <div class="welcome__grid">
-      <div class="welcome__images">
-        <div class="welcome__img-main reveal-clip">
-          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=900&auto=format&fit=crop&q=75" alt="Brasa dining room" />
-        </div>
-        <div class="welcome__img-accent reveal">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=75" alt="Signature dish" />
-        </div>
-      </div>
-      <div class="welcome__copy">
-        <span class="eyebrow">Welcome</span>
-        <h2 class="h-display">
-          <span class="reveal-line"><span data-i18n="welcome.h1">WELCOME</span></span><br/>
-          <span class="reveal-line reveal-line--delay"><span data-i18n="welcome.h2">TO BRASA</span></span>
+  <!-- ═══════════════════════════════════════
+       WELCOME — 50/50 panel split, full-height
+       ═══════════════════════════════════════ -->
+  <section class="welcome" id="welcome">
+    <div class="welcome__panel welcome__panel--img">
+      <img
+        src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=1200&auto=format&fit=crop&q=80"
+        alt="Brasa dining room"
+      />
+    </div>
+    <div class="welcome__panel welcome__panel--copy">
+      <div class="welcome__inner">
+        <span class="eyebrow" data-i18n="welcome.eyebrow">Welcome</span>
+        <div class="draw-line" aria-hidden="true"></div>
+        <h2 class="h-display scramble-text">
+          <span data-i18n="welcome.h1">WELCOME</span><br/><span data-i18n="welcome.h2">TO BRASA</span>
         </h2>
-        <p data-i18n="welcome.p">
+        <p class="reveal" data-i18n="welcome.p">
           Step inside Brasa, a dining room where Mexican heritage meets modern flourish. Smoke, salt and citrus — every dish tells a story of fire and patience.
         </p>
-        <p class="signature">Chef Mateo Rivas</p>
+        <p class="signature reveal">Chef Mateo Rivas</p>
+        <div class="welcome__stats">
+          <div class="stat reveal">
+            <span class="stat__n" data-target="7">0</span>
+            <span class="stat__label" data-i18n="stat.years">Years</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat__n" data-target="9">0</span>
+            <span class="stat__label" data-i18n="stat.courses">Courses</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat__n" data-target="48">0</span>
+            <span class="stat__label" data-i18n="stat.seats">Seats</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE + PHILOSOPHY -->
-  <section class="philosophy section">
-    <div class="philosophy__grid">
-      <div class="philosophy__lead">
+  <!-- ═══════════════════════════════════════
+       PHILOSOPHY — full-bleed bg, stroke→fill
+       ═══════════════════════════════════════ -->
+  <section class="philosophy" id="philosophy">
+    <div class="philosophy__bg-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&auto=format&fit=crop&q=80"
+        alt=""
+        aria-hidden="true"
+        class="philosophy__bg-img"
+      />
+      <div class="philosophy__overlay"></div>
+    </div>
+
+    <div class="philosophy__content">
+      <div class="philosophy__lead reveal">
         <p data-i18n="phil.lead">
           The Brasa experience is built on heat, honesty and harvest. Each plate draws on the flavours of Mexico — honoring tradition while reaching forward.
         </p>
       </div>
-      <div class="philosophy__img reveal">
-        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=700&auto=format&fit=crop&q=75" alt="Herbs and spice" />
+
+      <div class="philosophy__stamp">
+        <div class="stamp">BRASA · EST ·</div>
       </div>
-    </div>
 
-    <div class="philosophy__stamp">
-      <div class="stamp">BRASA · EST ·</div>
+      <h2 class="big-statement stroke-fill-text">
+        <span data-i18n="phil.big1">TRADITION</span><br/>
+        <span data-i18n="phil.big2">MEETS</span><br/>
+        <span data-i18n="phil.big3">MODERN FIRE</span>
+      </h2>
     </div>
-
-    <h2 class="big-statement">
-      <span data-i18n="phil.big1">TRADITION</span><br/>
-      <span data-i18n="phil.big2">MEETS</span><br/>
-      <span data-i18n="phil.big3">MODERN FIRE</span>
-      <span class="quote-mark">&rdquo;</span>
-    </h2>
   </section>
 
   <!-- ROOM SLIDER -->
@@ -154,73 +167,94 @@
     </div>
   </section>
 
-  <!-- CHEF / STORY -->
+  <!-- ═══════════════════════════════════════
+       CHEF — sticky image, 3 scroll blocks
+       ═══════════════════════════════════════ -->
   <section class="chef section" id="story">
-    <div class="chef__grid">
-      <div class="chef__photo reveal">
-        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=700&auto=format&fit=crop&q=75" alt="Chef Mateo Rivas" />
-        <div class="chef__caption">
-          <strong data-i18n="chef.name">CHEF MATEO RIVAS</strong>
-          <span data-i18n="chef.role">HEAD CHEF · OWNER</span>
+    <div class="chef__inner">
+      <div class="chef__col-sticky">
+        <div class="chef__sticky-img blur-reveal">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=700&auto=format&fit=crop&q=75" alt="Chef Mateo Rivas" />
+          <div class="chef__caption">
+            <strong data-i18n="chef.name">CHEF MATEO RIVAS</strong>
+            <span data-i18n="chef.role">HEAD CHEF · OWNER</span>
+          </div>
         </div>
       </div>
-      <div class="chef__copy">
-        <h3 class="h-serif" data-i18n="chef.tagline">
-          Brasa is the vision of Chef Mateo, shaped by his Oaxacan roots and years in some of the world's most respected fire kitchens.
-        </h3>
-        <p data-i18n="chef.p1">
-          Each plate at Brasa is a letter home. A slow-cooked barbacoa lamb, a prime ribeye kissed by mesquite, lobster bathed in chile de árbol butter — every bite travels between memory and reinvention.
-        </p>
-        <p data-i18n="chef.p2">
-          Our kitchen is open flame only. No shortcuts, no hiding. Just embers, iron, and the patience of hands that know the fire.
-        </p>
+
+      <div class="chef__col-scroll">
+        <div class="chef__block reveal">
+          <span class="eyebrow">Head Chef · Owner</span>
+          <div class="draw-line" aria-hidden="true"></div>
+          <h3 class="h-serif" data-i18n="chef.tagline">
+            Brasa is the vision of Chef Mateo, shaped by his Oaxacan roots and years in some of the world's most respected fire kitchens.
+          </h3>
+        </div>
+
+        <div class="chef__block reveal">
+          <p data-i18n="chef.p1">
+            Each plate at Brasa is a letter home. A slow-cooked barbacoa lamb, a prime ribeye kissed by mesquite, lobster bathed in chile de árbol butter — every bite travels between memory and reinvention.
+          </p>
+        </div>
+
+        <div class="chef__block reveal">
+          <p data-i18n="chef.p2">
+            Our kitchen is open flame only. No shortcuts, no hiding. Just embers, iron, and the patience of hands that know the fire.
+          </p>
+          <a href="#menu" class="btn btn--outline magnetic-btn" style="margin-top:32px; align-self:flex-start;" data-i18n="chef.cta">Explore the Menu</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MENU / TASTE -->
+  <!-- ═══════════════════════════════════════
+       MENU — 3-column masonry, blur-reveal
+       ═══════════════════════════════════════ -->
   <section class="taste section" id="menu">
-    <div class="taste__grid">
-      <div class="taste__copy">
-        <h2 class="h-display">
-          <span data-i18n="taste.h1">A TASTE</span><br/>
-          <span data-i18n="taste.h2">OF BRASA</span>
-        </h2>
-        <p data-i18n="taste.p">
-          A journey of fire from first bite to last. Prime cuts, coastal catches and wild game — paired with agave and smoke.
-        </p>
-        <a href="#contact" class="btn btn--outline" data-i18n="taste.cta">View Full Menu</a>
+    <div class="taste__header">
+      <h2 class="h-display scramble-text">
+        <span data-i18n="taste.h1">A TASTE</span><br/><span data-i18n="taste.h2">OF BRASA</span>
+      </h2>
+      <div class="taste__header-right">
+        <p data-i18n="taste.p">A journey of fire from first bite to last. Prime cuts, coastal catches and wild game — paired with agave and smoke.</p>
+        <a href="#contact" class="btn btn--outline magnetic-btn" data-i18n="taste.cta">View Full Menu</a>
       </div>
+    </div>
 
-      <div class="taste__stack">
-        <!-- Featured: full-width -->
-        <article class="dish dish--featured reveal-clip">
-          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&auto=format&fit=crop&q=75" alt="Prime ribeye" />
+    <div class="taste__masonry">
+      <!-- Column A — tall -->
+      <div class="masonry-col masonry-col--a">
+        <article class="dish blur-reveal">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=800&auto=format&fit=crop&q=75" alt="Prime ribeye" />
           <div class="dish__meta">
             <h4 data-i18n="dish1.n">PRIME RIBEYE · MESQUITE</h4>
             <p data-i18n="dish1.d">45-day dry-aged, charred over mesquite, smoked salt, grilled spring onion.</p>
           </div>
         </article>
-        <!-- Side-by-side pair -->
-        <div class="dish__row">
-          <article class="dish reveal-clip">
-            <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=600&auto=format&fit=crop&q=75" alt="Lobster" />
-            <div class="dish__meta">
-              <h4 data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
-              <p data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
-            </div>
-          </article>
-          <article class="dish reveal-clip">
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=75" alt="Quail" />
-            <div class="dish__meta">
-              <h4 data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
-              <p data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
-            </div>
-          </article>
-        </div>
-        <!-- Featured: full-width -->
-        <article class="dish dish--featured reveal-clip">
-          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
+      </div>
+
+      <!-- Column B — two short, offset down -->
+      <div class="masonry-col masonry-col--b">
+        <article class="dish blur-reveal">
+          <img src="https://images.unsplash.com/photo-1625938144755-652e08e359b7?w=600&auto=format&fit=crop&q=75" alt="Lobster" />
+          <div class="dish__meta">
+            <h4 data-i18n="dish2.n">LOBSTER · CHILE DE ÁRBOL</h4>
+            <p data-i18n="dish2.d">Whole Baja lobster, chile butter, charred lime, heirloom tortilla.</p>
+          </div>
+        </article>
+        <article class="dish blur-reveal">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=75" alt="Quail" />
+          <div class="dish__meta">
+            <h4 data-i18n="dish3.n">QUAIL · MOLE NEGRO</h4>
+            <p data-i18n="dish3.d">Roasted quail, 24-ingredient Oaxacan mole, sesame, black garlic.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Column C — tall, shifted -->
+      <div class="masonry-col masonry-col--c">
+        <article class="dish blur-reveal">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=75" alt="Lamb barbacoa" />
           <div class="dish__meta">
             <h4 data-i18n="dish4.n">LAMB BARBACOA</h4>
             <p data-i18n="dish4.d">Agave-leaf wrapped, ember-pit cooked overnight, salsa borracha.</p>
@@ -230,55 +264,70 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ═══════════════════════════════════════
+       PRESS — dominant left, two secondary right
+       ═══════════════════════════════════════ -->
   <section class="press section">
-    <div class="press__grid">
-      <figure class="press__item">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="press__band">
+      <figure class="press__dominant reveal">
+        <span class="press__pub eyebrow">La Gaceta</span>
         <blockquote data-i18n="press1">"A cathedral of smoke and spice. Brasa redefines what modern Mexican cuisine can be."</blockquote>
-        <figcaption>— La Gaceta</figcaption>
       </figure>
-      <figure class="press__item">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote data-i18n="press2">"Dining at the chef's table was unforgettable. Intimate, primal and delicious."</blockquote>
-        <figcaption>— Condé Nast Traveler</figcaption>
-      </figure>
-      <figure class="press__item">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote data-i18n="press3">"From the first mezcal to the last ember, flawless."</blockquote>
-        <figcaption>— The Standard</figcaption>
-      </figure>
+
+      <div class="press__secondary-col">
+        <figure class="press__secondary reveal">
+          <blockquote data-i18n="press2">"Dining at the chef's table was unforgettable. Intimate, primal and delicious."</blockquote>
+          <figcaption>— Condé Nast Traveler</figcaption>
+        </figure>
+        <div class="draw-line" aria-hidden="true"></div>
+        <figure class="press__secondary reveal">
+          <blockquote data-i18n="press3">"From the first mezcal to the last ember, flawless."</blockquote>
+          <figcaption>— The Standard</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ═══════════════════════════════════════
+       FAQ — ghost number, two-column rows
+       ═══════════════════════════════════════ -->
   <section class="faq section" id="faq">
-    <h2 class="h-display faq__title">FAQS</h2>
-    <div class="faq__list">
-      <details>
-        <summary data-i18n="faq1.q">Do I need to book a table in advance?</summary>
-        <p data-i18n="faq1.a">We recommend reserving at least 2 weeks ahead, especially for weekends and the chef's counter.</p>
-      </details>
-      <details>
-        <summary data-i18n="faq2.q">Where do your ingredients come from?</summary>
-        <p data-i18n="faq2.a">We source prime cuts from small ranches in Sonora, lobster from Baja California, and produce from local Mexican farms.</p>
-      </details>
-      <details>
-        <summary data-i18n="faq3.q">Do you cater for dietary needs?</summary>
-        <p data-i18n="faq3.a">Yes. Vegetarian, gluten-free and allergy-aware menus are available with 24-hour notice.</p>
-      </details>
-      <details>
-        <summary data-i18n="faq4.q">Can I host a private event at Brasa?</summary>
-        <p data-i18n="faq4.a">Absolutely. The private Ember Room seats up to 18 guests for tasting menus and celebrations.</p>
-      </details>
-      <details>
-        <summary data-i18n="faq5.q">Is there parking nearby?</summary>
-        <p data-i18n="faq5.a">Valet service is available from 6pm. Secure parking is located one block south.</p>
-      </details>
-      <details>
-        <summary data-i18n="faq6.q">What are your opening hours?</summary>
-        <p data-i18n="faq6.a">Tuesday to Sunday, 6pm — 11pm. Closed Mondays.</p>
-      </details>
+    <div class="faq__title-row">
+      <h2 class="h-display scramble-text faq__heading">FAQS</h2>
+      <div class="draw-line faq__rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="faq__rows">
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">01</div>
+        <div class="faq__q" data-i18n="faq1.q">Do I need to book a table in advance?</div>
+        <div class="faq__a" data-i18n="faq1.a">We recommend reserving at least 2 weeks ahead, especially for weekends and the chef's counter.</div>
+      </div>
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">02</div>
+        <div class="faq__q" data-i18n="faq2.q">Where do your ingredients come from?</div>
+        <div class="faq__a" data-i18n="faq2.a">We source prime cuts from small ranches in Sonora, lobster from Baja California, and produce from local Mexican farms.</div>
+      </div>
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">03</div>
+        <div class="faq__q" data-i18n="faq3.q">Do you cater for dietary needs?</div>
+        <div class="faq__a" data-i18n="faq3.a">Yes. Vegetarian, gluten-free and allergy-aware menus are available with 24-hour notice.</div>
+      </div>
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">04</div>
+        <div class="faq__q" data-i18n="faq4.q">Can I host a private event at Brasa?</div>
+        <div class="faq__a" data-i18n="faq4.a">Absolutely. The private Ember Room seats up to 18 guests for tasting menus and celebrations.</div>
+      </div>
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">05</div>
+        <div class="faq__q" data-i18n="faq5.q">Is there parking nearby?</div>
+        <div class="faq__a" data-i18n="faq5.a">Valet service is available from 6pm. Secure parking is located one block south.</div>
+      </div>
+      <div class="faq__row reveal">
+        <div class="faq__num" aria-hidden="true">06</div>
+        <div class="faq__q" data-i18n="faq6.q">What are your opening hours?</div>
+        <div class="faq__a" data-i18n="faq6.a">Tuesday to Sunday, 6pm — 11pm. Closed Mondays.</div>
+      </div>
     </div>
   </section>
 
@@ -288,7 +337,7 @@
       <div class="contact__block">
         <span class="eyebrow" data-i18n="contact.addr">ADDRESS</span>
         <p>Brasa Restaurante<br/>Calle Reforma 188<br/>Roma Norte, CDMX<br/>06700 México</p>
-        <a href="#" class="btn btn--outline" data-i18n="contact.book">BOOK NOW</a>
+        <a href="#" class="btn btn--outline magnetic-btn" data-i18n="contact.book">BOOK NOW</a>
       </div>
       <div class="contact__block">
         <span class="eyebrow" data-i18n="contact.phone">PHONE</span>
@@ -308,14 +357,27 @@
     </div>
   </section>
 
-  <!-- EVENING CTA -->
-  <section class="evening section">
-    <h2 class="h-serif evening__title">
-      <span data-i18n="eve.h1">AN EVENING</span><br/>
-      <span data-i18n="eve.h2">AT BRASA</span>
-    </h2>
-    <p data-i18n="eve.p">An intimate tasting menu of nine courses. Paired mezcal, natural wine, and stories from the fire.</p>
-    <a href="#" class="btn btn--outline" data-i18n="eve.cta">MAKE A RESERVATION</a>
+  <!-- ═══════════════════════════════════════
+       EVENING CTA — full-bleed fire photo
+       ═══════════════════════════════════════ -->
+  <section class="evening" id="evening">
+    <div class="evening__bg">
+      <img
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1800&auto=format&fit=crop&q=80"
+        alt=""
+        aria-hidden="true"
+        class="evening__bg-img"
+      />
+      <div class="evening__overlay"></div>
+    </div>
+
+    <div class="evening__content">
+      <h2 class="h-serif evening__title scramble-text">
+        <span data-i18n="eve.h1">AN EVENING</span><br/><span data-i18n="eve.h2">AT BRASA</span>
+      </h2>
+      <p class="reveal" data-i18n="eve.p">An intimate tasting menu of nine courses. Paired mezcal, natural wine, and stories from the fire.</p>
+      <a href="#contact" class="btn btn--outline magnetic-btn reveal" data-i18n="eve.cta">MAKE A RESERVATION</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
@@ -343,7 +405,7 @@
         </ul>
       </div>
     </div>
-    <h1 class="wordmark wordmark--foot">Brasa</h1>
+    <h2 class="wordmark wordmark--foot">Brasa</h2>
     <p class="foot__copy">© <span id="year"></span> Brasa Restaurante · CDMX</p>
   </footer>
 
