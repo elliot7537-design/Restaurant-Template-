@@ -50,6 +50,8 @@ const i18n = {
     "phil.big3": "MODERN FIRE",
 
     "room.label": "THE DINING ROOM",
+    "bar.label": "THE BAR",
+    "kitchen.label": "THE OPEN KITCHEN",
 
     "chef.name": "CHEF MATEO RIVAS",
     "chef.role": "HEAD CHEF · OWNER",
@@ -168,6 +170,8 @@ const i18n = {
     "phil.big3": "CON EL FUEGO",
 
     "room.label": "EL COMEDOR",
+    "bar.label": "LA BARRA",
+    "kitchen.label": "LA COCINA ABIERTA",
 
     "chef.name": "CHEF MATEO RIVAS",
     "chef.role": "CHEF EJECUTIVO \u00B7 PROPIETARIO",
