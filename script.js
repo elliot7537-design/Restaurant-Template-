@@ -455,7 +455,14 @@ function galleryGoTo(idx) {
 
 function galleryStartAutoplay() {
   if (galleryTimer) clearInterval(galleryTimer);
-  galleryGoTo(galleryIdx); // kick off progress bar
+  // Kick off progress bar without disturbing the already-active slide
+  if (galleryFill) {
+    galleryFill.style.transition = "none";
+    galleryFill.style.width = "0%";
+    galleryFill.offsetWidth; // force reflow
+    galleryFill.style.transition = "width 5s linear";
+    galleryFill.style.width = "100%";
+  }
   galleryTimer = setInterval(() => galleryGoTo(galleryIdx + 1), 5000);
 }
 
@@ -478,7 +485,7 @@ if (gallerySection) {
         galleryObs.unobserve(gallerySection);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0 });
   galleryObs.observe(gallerySection);
 }
 
